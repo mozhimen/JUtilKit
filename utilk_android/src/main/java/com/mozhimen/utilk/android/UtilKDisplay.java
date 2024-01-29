@@ -34,14 +34,12 @@ public class UtilKDisplay {
                 orientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
                 break;
             }
-            case Surface.ROTATION_180: {
-                orientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
-                break;
-            }
+
             case Surface.ROTATION_270: {
                 orientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
                 break;
             }
+
             default: {
                 orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
                 break;
