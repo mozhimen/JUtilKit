@@ -12,6 +12,8 @@ import com.mozhimen.utilk.android.content.UtilKContext;
 import com.mozhimen.utilk.java.io.UtilKFile;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 /**
  * @ClassName UtilKFileFormat
@@ -36,5 +38,9 @@ public class UtilKFileFormat {
             uri = Uri.fromFile(file);
         }
         return uri;
+    }
+
+    public static FileOutputStream file2fileOutputStream(File file, boolean isAppend) throws FileNotFoundException {
+        return new FileOutputStream(file, isAppend);
     }
 }

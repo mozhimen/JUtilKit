@@ -4,9 +4,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.mozhimen.utilk.javax.crypto.UtilKCryptoDisplace;
-import com.mozhimen.utilk.java.io.UtilKInputStreamFormat;
 import com.mozhimen.utilk.android.content.UtilKAssetManager;
+import com.mozhimen.utilk.java.io.UtilKInputStreamFormat;
+import com.mozhimen.utilk.javax.crypto.UtilKCryptoDisplace;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class UtilKStrAsset {
     public static File strAssetName2file(Context context, String strAssetName, String strFilePathNameDest, boolean isAppend, int bufferSize) throws Exception {
         if (!isAssetExists(context, strAssetName)) return null;
         else
-            return com.mozhimen.utilk.java.io.UtilKInputStreamFormat.inputStream2file(UtilKAssetManager.open(context, strAssetName), strAssetName2strFilePathName(strAssetName, strFilePathNameDest), isAppend, bufferSize);
+            return UtilKInputStreamFormat.inputStream2file(UtilKAssetManager.open(context, strAssetName), strAssetName2strFilePathName(strAssetName, strFilePathNameDest), isAppend, bufferSize);
     }
 
     public static Bitmap strAssetName2bitmapOfDecryptDisplace(Context context, String strAssetName) {
@@ -58,7 +58,7 @@ public class UtilKStrAsset {
     public static String strAssetName2str(Context context, String assetFileName) throws Exception {
         if (!isAssetExists(context, assetFileName)) return null;
         else
-            return com.mozhimen.utilk.java.io.UtilKInputStreamFormat.inputStream2str(context.getResources().getAssets().open(assetFileName));
+            return UtilKInputStreamFormat.inputStream2str(context.getResources().getAssets().open(assetFileName));
     }
 
     public static Boolean isAssetExists(Context context, String strAssetName) throws IOException {

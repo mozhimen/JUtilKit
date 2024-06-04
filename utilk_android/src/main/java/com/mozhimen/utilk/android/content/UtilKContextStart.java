@@ -16,4 +16,9 @@ public class UtilKContextStart {
         if (!(context instanceof Activity)) intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
+
+    public static void startContextByPackageName(Context context, String strPackageName, String activityName) {
+        Intent intent = UtilKIntent.getByPackageName(strPackageName, activityName);
+        startContext(context, intent);
+    }
 }

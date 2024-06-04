@@ -10,6 +10,8 @@ import android.content.res.Configuration;
  * @Version 1.0
  */
 public class UtilKConfiguration {
+    private static final String TAG = "UtilKConfiguration>>>>>";
+
     public static Configuration get() {
         return UtilKResources.getConfiguration();
     }

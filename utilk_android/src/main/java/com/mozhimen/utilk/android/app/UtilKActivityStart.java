@@ -15,7 +15,7 @@ import com.mozhimen.utilk.java.lang.UtilKRuntime;
  * @Date 2024/1/27 14:07
  * @Version 1.0
  */
-public class UtilKLaunchActivity {
+public class UtilKActivityStart {
     public static void startByPackageName(Context context, String strPackageName, String activityName) {
         Intent intent = UtilKIntent.getByPackageName(strPackageName, activityName);
         UtilKContextStart.startContext(context, intent);
