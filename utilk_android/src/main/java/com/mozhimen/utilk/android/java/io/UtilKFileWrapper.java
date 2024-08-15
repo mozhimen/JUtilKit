@@ -2,7 +2,7 @@ package com.mozhimen.utilk.android.java.io;
 
 import com.mozhimen.utilk.android.android.util.UtilKLogWrapper;
 import com.mozhimen.utilk.android.commons.IUtilK;
-import com.mozhimen.utilk.android.java.lang.UtilKStrFile;
+import com.mozhimen.utilk.android.java.UtilKStrFile;
 
 import java.io.File;
 
@@ -22,34 +22,39 @@ public class UtilKFileWrapper implements IUtilK {
         return isFile(file);
     }
 
-    public static File createFile(File file) throws Exception {
+    public static boolean createFile(File file) throws Exception {
         String parent = file.getParent();
         if (parent != null) {
-            createFolder(parent);
+            UtilKStrFile.createFolder(parent);
         } else {
             throw new Exception("don't have parent folder");
         }
         if (!isFileExist(file)) {
-            boolean res = file.createNewFile();
-            UtilKLogWrapper.d(TAG, "createFile: file " + file.getAbsolutePath() + " " + res);
+            try {
+
+                boolean res = file.createNewFile();
+                UtilKLogWrapper.d(TAG, "createFile: file " + file.getAbsolutePath() + " " + res);
+            } catch (Exception e) {
+                e.printStackTrace();
+                UtilKLogWrapper.e(TAG, "createFile: file " + file.getAbsolutePath() + " fail");
+            }
         } else {
             UtilKLogWrapper.d(TAG, "createFile: file is exits");
+            return true;
         }
-        return file;
+        return false;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static File createFolder(String folderPath) {
-        return createFolder(UtilKStrFile.strFilePath2file(UtilKStrFile.getStrFolderPath(folderPath)));
-    }
-
-    public static File createFolder(File folder) {
-        if (!isFolderExist(folder)) {
+    public static boolean createFolder(File folder) {
+        if (isFolderExist(folder)) {
+            return true;
+        } else {
             boolean res = folder.mkdirs();
-            //Log.d(TAG, "createFolder: create path " + folder.getAbsolutePath() + " " + res);
+            UtilKLogWrapper.d(TAG, "createFolder: create path " + folder.getAbsolutePath() + " " + res);
+            return res;
         }
-        return folder;
     }
 
     public static boolean isFolderExist(File folder) {

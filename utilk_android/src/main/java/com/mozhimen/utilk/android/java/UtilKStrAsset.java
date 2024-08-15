@@ -1,10 +1,11 @@
-package com.mozhimen.utilk.android.java.lang;
+package com.mozhimen.utilk.android.java;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.mozhimen.utilk.android.android.content.UtilKAssetManager;
+import com.mozhimen.utilk.android.android.util.UtilKLogWrapper;
 import com.mozhimen.utilk.android.java.io.UtilKInputStreamFormat;
 import com.mozhimen.utilk.android.javax.crypto.UtilKCryptoDisplace;
 
@@ -46,10 +47,14 @@ public class UtilKStrAsset {
 
     public static Bitmap strAssetName2bitmap(Context context, String strAssetName) {
         try {
-            if (!isAssetExists(context, strAssetName)) return null;
+            if (!isAssetExists(context, strAssetName)) {
+                UtilKLogWrapper.e(TAG, "strAssetName2bitmap: no such file");
+                return null;
+            }
             else
                 return UtilKInputStreamFormat.inputStream2bitmapAny(UtilKAssetManager.open_ofCxt(context, strAssetName));
         } catch (Exception e) {
+            UtilKLogWrapper.e(TAG, "strAssetName2bitmap: ", e);
             e.printStackTrace();
         }
         return null;

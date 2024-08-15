@@ -28,7 +28,7 @@ public class UtilKContextStart implements IUtilK {
     }
 
     public static void startContextByPackageName(Context context, String strPackageName, String activityName) {
-        Intent intent = UtilKIntentWrapper.getByPackageName(strPackageName, activityName);
+        Intent intent = UtilKIntentWrapper.getComponent(strPackageName, activityName);
         startContext(context, intent);
     }
 }

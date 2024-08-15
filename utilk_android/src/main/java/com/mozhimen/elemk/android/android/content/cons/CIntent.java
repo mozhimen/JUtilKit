@@ -11,4 +11,5 @@ import android.content.Intent;
  */
 public class CIntent {
     public final static int FLAG_GRANT_READ_URI_PERMISSION = Intent.FLAG_GRANT_READ_URI_PERMISSION;
+    public final static String ACTION_VIEW = Intent.ACTION_VIEW;
 }

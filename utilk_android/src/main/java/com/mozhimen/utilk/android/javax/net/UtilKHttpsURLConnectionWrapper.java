@@ -1,9 +1,10 @@
 package com.mozhimen.utilk.android.javax.net;
 
-import android.annotation.SuppressLint;
+import static com.mozhimen.utilk.android.java.io.UtilKInputStreamFormat.inputStream2str_use_ofBufferedReader;
+
 import android.util.Log;
 
-import com.mozhimen.utilk.android.java.io.UtilKInputStreamFormat;
+import com.mozhimen.utilk.android.commons.IUtilK;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,20 +28,18 @@ import javax.net.ssl.HttpsURLConnection;
  * @Date 2024/4/9
  * @Version 1.0
  */
-public class UtilKHttpsURLConnectionWrapper {
-    private static final String TAG = "UtilKHttpsURLConnectionWrapper>>>>>";
+public class UtilKHttpsURLConnectionWrapper implements IUtilK {
 
-    public static String requestPost(String strUrl, Map<String, String> headers, Map<String, String> params) throws NoSuchAlgorithmException, KeyManagementException, JSONException {
+    public static String requestPost(String strUrl, Map<String, String> headers, Map<String, Object> params) throws NoSuchAlgorithmException, KeyManagementException, JSONException {
         return requestPost(strUrl, headers, params, 3000, 100000);
     }
 
-    @SuppressLint("LongLogTag")
-    public static String requestPost(String strUrl, Map<String, String> headers, Map<String, String> params, int connectTimeout, int readTimeout) throws NoSuchAlgorithmException, KeyManagementException, JSONException {
+    public static String requestPost(String strUrl, Map<String, String> headers, Map<String, Object> params, int connectTimeout, int readTimeout) throws NoSuchAlgorithmException, KeyManagementException, JSONException {
         HttpsURLConnection httpsURLConnection = null;
         JSONObject jsonObject = null;
         OutputStreamWriter outputStreamWriter;
         try {
-            httpsURLConnection = UtilKHttpsURLConnection.get(strUrl, connectTimeout, readTimeout);
+            httpsURLConnection = com.mozhimen.utilk.android.javax.net.UtilKHttpsURLConnection.get(strUrl, connectTimeout, readTimeout);
             httpsURLConnection.setRequestMethod("POST");
             if (headers != null) {
                 for (Map.Entry<String, String> entry : headers.entrySet()) {
@@ -50,8 +49,17 @@ public class UtilKHttpsURLConnectionWrapper {
 
             if (params != null) {
                 jsonObject = new JSONObject();
-                for (Map.Entry<String, String> entry : params.entrySet()) {
-                    jsonObject.put(entry.getKey(), entry.getValue());
+                for (Map.Entry<String, Object> entry : params.entrySet()) {
+                    Object obj = entry.getValue();
+                    if (obj instanceof Map<?, ?>) {
+                        JSONObject jsonObject1 = new JSONObject();
+                        for (Map.Entry<String, Object> entry1 : ((Map<String, Object>) obj).entrySet()) {
+                            jsonObject1.put(entry1.getKey(), entry1.getValue());
+                        }
+                        jsonObject.put(entry.getKey(), jsonObject1);
+                    } else {
+                        jsonObject.put(entry.getKey(), obj);
+                    }
                 }
             }
             httpsURLConnection.setDoOutput(true);
@@ -64,7 +72,7 @@ public class UtilKHttpsURLConnectionWrapper {
                 outputStreamWriter.write(jsonObject.toString());
                 outputStreamWriter.flush();
                 outputStreamWriter.close();
-                Log.d(TAG, "requestPost: "+jsonObject.toString());
+                Log.d(TAG, "requestPost: " + jsonObject.toString());
             }
 
             InputStream inputStream;
@@ -72,7 +80,7 @@ public class UtilKHttpsURLConnectionWrapper {
                 inputStream = httpsURLConnection.getInputStream();
             else
                 inputStream = httpsURLConnection.getErrorStream();
-            return UtilKInputStreamFormat.inputStream2str_use_ofBufferedReader(inputStream);
+            return inputStream2str_use_ofBufferedReader(inputStream);
         } catch (MalformedURLException e) {
             e.printStackTrace(); // url格式错误
         } catch (IOException e) {

@@ -1,8 +1,10 @@
 package com.mozhimen.utilk.android.android.content;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.annotation.StringRes;
 import android.view.WindowManager;
 
 /**
@@ -13,6 +15,14 @@ import android.view.WindowManager;
  * @Version 1.0
  */
 public class UtilKContext {
+    public static ApplicationInfo getApplicationInfo(Context context) {
+        return context.getApplicationInfo();
+    }
+
+    public static String getString(Context context , @StringRes int intResStr ) {
+        return context.getString(intResStr);
+    }
+
     public static WindowManager getWindowManager(Context context) {
         return (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
     }

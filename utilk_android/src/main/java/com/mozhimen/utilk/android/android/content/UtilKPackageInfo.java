@@ -1,15 +1,12 @@
 package com.mozhimen.utilk.android.android.content;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.os.Build;
+import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.mozhimen.utilk.android.android.os.UtilKBuildVersion;
+import com.mozhimen.elemk.android.android.content.cons.CPackageManager;
+import com.mozhimen.utilk.android.commons.IUtilK;
 
 /**
  * @ClassName UtilKPackageInfo
@@ -18,27 +15,82 @@ import com.mozhimen.utilk.android.android.os.UtilKBuildVersion;
  * @Date 2024/1/27 15:36
  * @Version 1.0
  */
-public class UtilKPackageInfo {
-    public static PackageInfo get(Context context, String strPackageName) throws PackageManager.NameNotFoundException {
-        return UtilKPackageManager.getPackageInfo(context, strPackageName, PackageManager.GET_ACTIVITIES);
+public class UtilKPackageInfo implements IUtilK {
+    public static PackageInfo get(Context context, String strPackageName, int flags)  {
+        return UtilKPackageManager.getPackageInfo(context, strPackageName, flags);
     }
 
-    public static boolean hasPackage(Context context, String strPackageName) {
+    public static PackageInfo get(Context context, int flags)  {
+        return get(context, com.mozhimen.utilk.android.android.content.UtilKContext.getPackageName(context), flags /*0*/);
+    }
+
+    public static PackageInfo get(Context context)  {
+        return get(context, 0);
+    }
+
+    //////////////////////////////////////////////////////////////
+
+    /**
+     * 获取程序包名
+     */
+    public static String getVersionName(Context context) {
+        PackageInfo packageInfo = get(context);
+        if (packageInfo != null) {
+            return getVersionName(packageInfo);
+        } else
+            return "";
+    }
+
+    public static String getVersionName(PackageInfo packageInfo) {
         try {
-            get(context, strPackageName);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
+            if (packageInfo != null) {
+                return packageInfo.versionName;
+            } else
+                return "";
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "getVersionName: NameNotFoundException ${e.message}");
+            return "";
         }
     }
 
-    @SuppressLint("QueryPermissionsNeeded")
-    public static boolean hasIntent(@NonNull Context context, @Nullable Intent intent) {
-        if (intent == null) return false;
-        // 这里为什么不用 Intent.resolveActivity(intent) != null 来判断呢？
-        // 这是因为在 OPPO R7 Plus （Android 5.0）会出现误判，明明没有这个 Activity，却返回了 ComponentName 对象
-        if (UtilKBuildVersion.isAfterV_33_13_TIRAMISU())
-            return !UtilKPackageManager.get(context).queryIntentActivities(intent, PackageManager.ResolveInfoFlags.of(PackageManager.MATCH_DEFAULT_ONLY)).isEmpty();
-        return !UtilKPackageManager.get(context).queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY).isEmpty();
+    /**
+     * 获取程序版本号
+     */
+    public static int getVersionCode(Context context) {
+        PackageInfo packageInfo = get(context);
+        if (packageInfo != null) {
+            return getVersionCode(packageInfo);
+        } else
+            return 0;
+    }
+
+    public static int getVersionCode(PackageInfo packageInfo) {
+        try {
+            if (packageInfo != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    return (int) packageInfo.getLongVersionCode();
+                } else {
+                    return packageInfo.versionCode;
+                }
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "getVersionCode: NameNotFoundException ${e.message}");
+            return 0;
+        }
+    }
+
+    //////////////////////////////////////////////////////////////
+
+    public static boolean hasPackage(Context context, String strPackageName) {
+        try {
+            get(context, strPackageName, CPackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

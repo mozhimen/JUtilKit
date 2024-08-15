@@ -20,34 +20,21 @@ import javax.net.ssl.X509TrustManager;
 class UtilKSSLContext {
     public static SSLContext get_ofSSL() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance("SSL");
-        sslContext.init(null, new TrustManager[]{new BaseX509TrustManager()}, new SecureRandom());
+        sslContext.init(null, new TrustManager[]{new com.mozhimen.elemk.android.javax.net.bases.BaseX509TrustManager()}, new SecureRandom());
         return sslContext;
     }
 
-    @SuppressWarnings("CustomX509TrustManager")
-    static class BaseX509TrustManager implements X509TrustManager {
-
-
-        @SuppressWarnings("TrustAllX509TrustManager")
-        @Override
-        public void checkClientTrusted(X509Certificate[] chain, String authType) {
-
-        }
-
-        @SuppressWarnings("TrustAllX509TrustManager")
-        @Override
-        public void checkServerTrusted(X509Certificate[] chain, String authType) {
-
-        }
-
-        @Override
-        public X509Certificate[] getAcceptedIssuers() {
-            return new X509Certificate[] {};
-        }
+    public static SSLContext get_ofTLS() throws NoSuchAlgorithmException, KeyManagementException {
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+        sslContext.init(null, new TrustManager[]{new com.mozhimen.elemk.android.javax.net.bases.BaseX509TrustManager()}, new SecureRandom());
+        return sslContext;
     }
 
-
     //////////////////////////////////////////////////////////////////////////////////
+
+    public static SSLSocketFactory getSocketFactory_ofTLS() throws NoSuchAlgorithmException, KeyManagementException {
+        return get_ofTLS().getSocketFactory();
+    }
 
     public static SSLSocketFactory getSocketFactory_ofSSL() throws NoSuchAlgorithmException, KeyManagementException {
         return get_ofSSL().getSocketFactory();

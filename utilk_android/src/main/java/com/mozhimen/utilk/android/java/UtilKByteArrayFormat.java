@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import com.mozhimen.utilk.android.commons.IUtilK;
+
 /**
  * @ClassName UtilKByteArrayFormat
  * @Description TODO
@@ -12,8 +14,7 @@ import android.util.Log;
  * @Date 2024/1/27 14:10
  * @Version 1.0
  */
-public class UtilKByteArrayFormat {
-    private static final String TAG = "UtilKByteArrayFormat>>>>>";
+public class UtilKByteArrayFormat implements IUtilK {
 
     @SuppressLint("LongLogTag")
     public static Bitmap bytes2bitmapAny(byte[] bytes) {

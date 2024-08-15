@@ -1,4 +1,4 @@
-package com.mozhimen.utilk.android.java.lang;
+package com.mozhimen.utilk.android.java;
 
 import org.json.JSONException;
 import org.json.JSONObject;

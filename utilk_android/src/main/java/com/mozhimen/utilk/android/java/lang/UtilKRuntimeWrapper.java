@@ -1,5 +1,7 @@
 package com.mozhimen.utilk.android.java.lang;
 
+import com.mozhimen.utilk.android.java.UtilKStrFile;
+
 import java.io.IOException;
 
 /**

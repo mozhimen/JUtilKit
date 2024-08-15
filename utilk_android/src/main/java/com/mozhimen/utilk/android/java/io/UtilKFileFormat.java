@@ -3,12 +3,12 @@ package com.mozhimen.utilk.android.java.io;
 import android.net.Uri;
 
 import com.mozhimen.utilk.android.android.content.UtilKContext;
-import com.mozhimen.utilk.android.android.content.UtilKPackage;
 import com.mozhimen.utilk.android.android.os.UtilKBuildVersion;
 import com.mozhimen.utilk.android.android.support.UtilKFileProvider;
 import com.mozhimen.utilk.android.android.util.UtilKLogWrapper;
 import com.mozhimen.utilk.android.bases.BaseUtilK;
 import com.mozhimen.elemk.android.android.content.cons.CIntent;
+import com.mozhimen.utilk.android.wrapper.UtilKPackage;
 
 import java.io.File;
 import java.io.FileNotFoundException;

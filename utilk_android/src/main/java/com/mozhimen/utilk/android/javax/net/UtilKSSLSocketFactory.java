@@ -12,8 +12,12 @@ import javax.net.ssl.SSLSocketFactory;
  * @Date 2023/11/9 16:40
  * @Version 1.0
  */
-class UtilKSSLSocketFactory {
+public class UtilKSSLSocketFactory {
     public static SSLSocketFactory get_ofSSL() throws NoSuchAlgorithmException, KeyManagementException {
         return UtilKSSLContext.getSocketFactory_ofSSL();
+    }
+
+    public static SSLSocketFactory get_ofTLS() throws NoSuchAlgorithmException, KeyManagementException {
+        return UtilKSSLContext.getSocketFactory_ofTLS();
     }
 }

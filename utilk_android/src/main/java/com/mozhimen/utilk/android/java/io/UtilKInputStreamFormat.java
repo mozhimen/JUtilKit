@@ -85,7 +85,9 @@ public class UtilKInputStreamFormat {
     }
 
     public static File inputStream2file(InputStream inputStream, String strFilePathNameDest, boolean isAppend, int bufferSize) throws Exception {
-        return inputStream2file(inputStream, UtilKStrFile.createFile(strFilePathNameDest), isAppend, bufferSize);
+        File file = UtilKStrFile.strFilePath2file(strFilePathNameDest);
+        UtilKStrFile.createFile(strFilePathNameDest);
+        return inputStream2file(inputStream, file, isAppend, bufferSize);
     }
 
     public static File inputStream2file(InputStream inputStream, File fileDest, boolean isAppend, int bufferSize) throws Exception {

@@ -5,6 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.mozhimen.utilk.android.android.util.UtilKLogWrapper;
+import com.mozhimen.utilk.android.commons.IUtilK;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -18,7 +21,18 @@ import java.util.Map;
  * @Date 2024/2/29
  * @Version 1.0
  */
-public class UtilKViewGroup {
+public class UtilKViewGroup implements IUtilK {
+    public static void addViewSafe(ViewGroup viewGroup, View view, int width, int height) {
+        if (view.getParent() == null)
+            viewGroup.addView(view, new ViewGroup.LayoutParams(width, height));
+        else if (view.getParent() instanceof ViewGroup) {
+            ((ViewGroup) view.getParent()).removeView(view);
+            viewGroup.addView(view, new ViewGroup.LayoutParams(width, height));
+        } else {
+            UtilKLogWrapper.e(TAG, "addViewSafe: fail");
+        }
+    }
+
     public static List<View> findAllViews(ViewGroup viewGroup) {
         Deque<View> viewDeque = new ArrayDeque<>();
         viewDeque.add(viewGroup);
