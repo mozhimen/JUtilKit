@@ -1,10 +1,9 @@
 package com.mozhimen.utilk.android.javax.net;
 
-import static com.mozhimen.utilk.android.java.io.UtilKInputStreamFormat.inputStream2str_use_ofBufferedReader;
-
 import android.util.Log;
 
 import com.mozhimen.utilk.android.commons.IUtilK;
+import com.mozhimen.utilk.android.java.io.UtilKInputStreamFormat;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,7 +38,7 @@ public class UtilKHttpsURLConnectionWrapper implements IUtilK {
         JSONObject jsonObject = null;
         OutputStreamWriter outputStreamWriter;
         try {
-            httpsURLConnection = com.mozhimen.utilk.android.javax.net.UtilKHttpsURLConnection.get(strUrl, connectTimeout, readTimeout);
+            httpsURLConnection = UtilKHttpsURLConnection.get(strUrl, connectTimeout, readTimeout);
             httpsURLConnection.setRequestMethod("POST");
             if (headers != null) {
                 for (Map.Entry<String, String> entry : headers.entrySet()) {
@@ -80,7 +79,7 @@ public class UtilKHttpsURLConnectionWrapper implements IUtilK {
                 inputStream = httpsURLConnection.getInputStream();
             else
                 inputStream = httpsURLConnection.getErrorStream();
-            return inputStream2str_use_ofBufferedReader(inputStream);
+            return UtilKInputStreamFormat.inputStream2str_use_ofBufferedReader(inputStream);
         } catch (MalformedURLException e) {
             e.printStackTrace(); // url格式错误
         } catch (IOException e) {

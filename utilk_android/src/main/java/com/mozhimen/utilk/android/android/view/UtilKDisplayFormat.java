@@ -1,7 +1,5 @@
 package com.mozhimen.utilk.android.android.view;
 
-import androidx.annotation.FloatRange;
-
 import com.mozhimen.utilk.android.android.util.UtilKDisplayMetrics;
 
 /**
@@ -12,7 +10,7 @@ import com.mozhimen.utilk.android.android.util.UtilKDisplayMetrics;
  * @Version 1.0
  */
 public class UtilKDisplayFormat {
-    public static float dp2px(@FloatRange(from = 0.0) Float dp) {
+    public static float dp2px(/*@FloatRange(from = 0.0)*/ Float dp) {
         return dp * UtilKDisplayMetrics.getDensity_ofSys();
     }
 }

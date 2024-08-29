@@ -1,5 +1,7 @@
 package com.mozhimen.utilk.android.javax.net;
 
+import com.mozhimen.elemk.android.javax.net.bases.BaseX509TrustManager;
+
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -20,13 +22,13 @@ import javax.net.ssl.X509TrustManager;
 class UtilKSSLContext {
     public static SSLContext get_ofSSL() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance("SSL");
-        sslContext.init(null, new TrustManager[]{new com.mozhimen.elemk.android.javax.net.bases.BaseX509TrustManager()}, new SecureRandom());
+        sslContext.init(null, new TrustManager[]{new BaseX509TrustManager()}, new SecureRandom());
         return sslContext;
     }
 
     public static SSLContext get_ofTLS() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance("TLS");
-        sslContext.init(null, new TrustManager[]{new com.mozhimen.elemk.android.javax.net.bases.BaseX509TrustManager()}, new SecureRandom());
+        sslContext.init(null, new TrustManager[]{new BaseX509TrustManager()}, new SecureRandom());
         return sslContext;
     }
 

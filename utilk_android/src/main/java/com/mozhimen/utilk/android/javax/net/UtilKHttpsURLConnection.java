@@ -1,5 +1,7 @@
 package com.mozhimen.utilk.android.javax.net;
 
+import com.mozhimen.elemk.android.javax.net.bases.BaseHostnameVerifier;
+
 import java.io.IOException;
 import java.net.URL;
 import java.security.KeyManagementException;
@@ -15,7 +17,7 @@ public class UtilKHttpsURLConnection {
     public static HttpsURLConnection get(String strUrl, int connectTimeout, int readTimeout) throws IOException, NoSuchAlgorithmException, KeyManagementException {
         URL uRL = new URL(strUrl);
         HttpsURLConnection httpsURLConnection = (HttpsURLConnection) uRL.openConnection();
-        httpsURLConnection.setHostnameVerifier(new com.mozhimen.elemk.android.javax.net.bases.BaseHostnameVerifier());
+        httpsURLConnection.setHostnameVerifier(new BaseHostnameVerifier());
         httpsURLConnection.setSSLSocketFactory(UtilKSSLSocketFactory.get_ofSSL());//获取SSLSocketFactory对象
         httpsURLConnection.setConnectTimeout(connectTimeout); // 设置超时时间
         httpsURLConnection.setReadTimeout(readTimeout);

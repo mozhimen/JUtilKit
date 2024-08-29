@@ -1,10 +1,9 @@
 package com.mozhimen.utilk.android.java.net;
 
-import static com.mozhimen.utilk.android.java.io.UtilKInputStreamFormat.inputStream2str_use_ofBufferedReader;
-
 import android.util.Log;
 
 import com.mozhimen.utilk.android.commons.IUtilK;
+import com.mozhimen.utilk.android.java.io.UtilKInputStreamFormat;
 
 import org.json.JSONObject;
 
@@ -77,7 +76,7 @@ public class UtilKHttpURLConnectionWrapper implements IUtilK {
                 inputStream = httpURLConnection.getInputStream();
             else
                 inputStream = httpURLConnection.getErrorStream();
-            return inputStream2str_use_ofBufferedReader(inputStream);
+            return UtilKInputStreamFormat.inputStream2str_use_ofBufferedReader(inputStream);
         } catch (Exception e) {
             e.printStackTrace();
             Log.d(TAG, "request_ofPost: ", e);

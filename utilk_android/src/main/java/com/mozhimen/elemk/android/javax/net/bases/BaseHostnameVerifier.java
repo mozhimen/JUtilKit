@@ -1,8 +1,8 @@
 package com.mozhimen.elemk.android.javax.net.bases;
 
 import android.annotation.SuppressLint;
-import android.support.annotation.NonNull;
 import android.util.Log;
+
 
 import com.mozhimen.utilk.android.commons.IUtilK;
 

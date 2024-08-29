@@ -21,7 +21,7 @@ public class UtilKPackageInfo implements IUtilK {
     }
 
     public static PackageInfo get(Context context, int flags)  {
-        return get(context, com.mozhimen.utilk.android.android.content.UtilKContext.getPackageName(context), flags /*0*/);
+        return get(context, UtilKContext.getPackageName(context), flags /*0*/);
     }
 
     public static PackageInfo get(Context context)  {
