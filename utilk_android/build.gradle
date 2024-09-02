@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.utilk.android'
+    namespace 'com.mozhimen.java.utilk'
     compileSdk 33
 
     defaultConfig {
@@ -34,9 +34,12 @@ android {
 }
 
 dependencies {
+    api 'androidx.annotation:annotation:1.7.1'
+    api 'androidx.core:core-ktx:1.12.0'//1.10.1
+
 //    implementation 'androidx.appcompat:appcompat:1.4.1'//1.6.1
 //    implementation 'androidx.annotation:annotation:1.7.1'
-    implementation('com.android.support:appcompat-v7:26.1.0')
+//    implementation('com.android.support:appcompat-v7:26.1.0')
     implementation project(project.path.replace(project.name, '') +':utilk_java')
     //test
     testImplementation 'junit:junit:4.13.2'
