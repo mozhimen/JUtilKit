@@ -28,17 +28,32 @@ public class UtilKBuildVersion {
 
     ///////////////////////////////////////////////////////////////////////
 
-    public static boolean isBeforeV_33_13_TIRAMISU() {
-        return isBeforeVersion(CVersCode.V_33_13_TIRAMISU);
+    public static boolean isBeforeV_24_7_N() {
+        return isBeforeVersion(CVersCode.V_24_7_N);
     }
+
+    public static boolean isBeforeV_33_13_T() {
+        return isBeforeVersion(CVersCode.V_33_13_T);
+    }
+
+    public static boolean isBeforeV_34_14_UDC() {
+        return isBeforeVersion(CVersCode.V_34_14_UDC);
+    }
+
+    ///////////////////////////////////////////////////////////////////////
 
     //    @ChecksSdkIntAtLeast(api = CVersCode.V_24_7_N)
     public static boolean isAfterV_24_7_N() {
         return isAfterVersion(CVersCode.V_24_7_N);
     }
 
-    //    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
-    public static boolean isAfterV_33_13_TIRAMISU() {
-        return isAfterVersion(CVersCode.V_33_13_TIRAMISU);
+    //    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.T)
+    public static boolean isAfterV_33_13_T() {
+        return isAfterVersion(CVersCode.V_33_13_T);
+    }
+
+    //    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.T)
+    public static boolean isAfterV_34_14_UDC() {
+        return isAfterVersion(CVersCode.V_34_14_UDC);
     }
 }

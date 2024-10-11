@@ -16,19 +16,26 @@ import com.mozhimen.java.utilk.wrapper.UtilKRes;
  * @Version 1.0
  */
 public class UtilKApplicationInfo {
-    public static ApplicationInfo get_ofCxt(Context context) {
+    public static ApplicationInfo get(Context context) {
         return UtilKContext.getApplicationInfo(context);
     }
 
     //////////////////////////////////////////////////////////////////////
 
     @IdRes
-    public static int getLabelRes_ofCxt(Context context) {
-        return get_ofCxt(context).labelRes;
+    public static int getLabelRes(Context context) {
+        return get(context).labelRes;
     }
 
     @SuppressLint("ResourceType")
-    public static String getLabelResStr_ofCxt(Context context) {
-        return UtilKRes.getString_ofContext(context, getLabelRes_ofCxt(context));
+    public static String getLabelResStr(Context context) {
+        try {
+            int intResStr = getLabelRes(context);
+            if (intResStr == 0) return "";
+            return UtilKRes.getString_ofContext(context, intResStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 }
