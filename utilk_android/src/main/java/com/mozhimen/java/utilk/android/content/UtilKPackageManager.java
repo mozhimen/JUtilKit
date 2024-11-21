@@ -5,11 +5,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.util.Log;
 
-import com.mozhimen.java.utilk.android.os.UtilKBuildVersion;
-import com.mozhimen.java.utilk.android.util.UtilKLogWrapper;
-import com.mozhimen.java.utilk.commons.IUtilK;
+import androidx.annotation.RequiresPermission;
+
+import com.mozhimen.java.
+elemk.android.android.content.cons.CPermission;
+import com.mozhimen.java.
+utilk.android.os.UtilKBuildVersion;
+import com.mozhimen.java.
+utilk.android.util.UtilKLogWrapper;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
+
+import java.util.List;
 
 /**
  * @ClassName UtilKPackageManager
@@ -31,5 +41,22 @@ public class UtilKPackageManager implements IUtilK {
             UtilKLogWrapper.e(TAG, "getPackageInfo: ", e);
             return null;
         }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * 查询所有的符合Intent的Activities
+     */
+    @RequiresPermission(CPermission.QUERY_ALL_PACKAGES)
+    @SuppressLint("QueryPermissionsNeeded")
+    public static List<ResolveInfo> queryIntentActivities(Context context, Intent intent, int flags) {
+        return get(context).queryIntentActivities(intent, flags);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////
+
+    public static Intent getLaunchIntentForPackage(Context context, String strPackageName) {
+        return get(context).getLaunchIntentForPackage(strPackageName);
     }
 }

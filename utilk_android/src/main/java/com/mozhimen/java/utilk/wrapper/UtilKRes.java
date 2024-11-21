@@ -4,7 +4,8 @@ import android.content.Context;
 
 import androidx.annotation.StringRes;
 
-import com.mozhimen.java.utilk.android.content.UtilKContext;
+import com.mozhimen.java.
+utilk.android.content.UtilKContext;
 /**
  * @ClassName UtilKRes
  * @Description TODO

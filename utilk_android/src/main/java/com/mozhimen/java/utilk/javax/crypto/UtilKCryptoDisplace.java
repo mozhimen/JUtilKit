@@ -3,7 +3,8 @@ package com.mozhimen.java.utilk.javax.crypto;
 import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.mozhimen.java.utilk.java.UtilKByteArrayFormat;
+import com.mozhimen.java.
+utilk.java.UtilKByteArrayFormat;
 
 /**
  * @ClassName UtilKCryptDisplace

@@ -2,8 +2,10 @@ package com.mozhimen.java.utilk.bases;
 
 import android.content.Context;
 
-import com.mozhimen.java.utilk.android.app.UtilKApplicationWrapper;
-import com.mozhimen.java.utilk.commons.IUtilK;
+import com.mozhimen.java.
+utilk.android.app.UtilKApplicationWrapper;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
 
 /**
  * @ClassName BaseUtilK

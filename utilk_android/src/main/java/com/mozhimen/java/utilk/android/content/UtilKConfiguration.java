@@ -2,7 +2,8 @@ package com.mozhimen.java.utilk.android.content;
 
 import android.content.res.Configuration;
 
-import com.mozhimen.java.utilk.commons.IUtilK;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
 
 /**
  * @ClassName UtilKConfiguration

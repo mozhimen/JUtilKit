@@ -4,7 +4,8 @@ import android.content.Context;
 import android.view.Display;
 import android.view.WindowManager;
 
-import com.mozhimen.java.utilk.android.content.UtilKContext;
+import com.mozhimen.java.
+utilk.android.content.UtilKContext;
 
 /**
  * @ClassName UtilKWindowManager

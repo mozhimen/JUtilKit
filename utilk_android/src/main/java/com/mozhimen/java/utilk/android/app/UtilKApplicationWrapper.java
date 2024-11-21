@@ -4,7 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
-import com.mozhimen.java.utilk.java.UtilKStrPackage;
+import com.mozhimen.java.
+utilk.java.UtilKStrPackage;
 
 /**
  * @ClassName ApplicationUtil

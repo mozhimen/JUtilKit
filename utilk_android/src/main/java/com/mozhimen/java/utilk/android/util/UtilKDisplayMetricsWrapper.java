@@ -2,7 +2,8 @@ package com.mozhimen.java.utilk.android.util;
 
 import android.util.DisplayMetrics;
 
-import com.mozhimen.java.elemk.android.android.util.cons.CTypedValue;
+import com.mozhimen.java.
+elemk.android.android.util.cons.CTypedValue;
 
 /**
  * @ClassName UtilKDisplayMetricsWrapper

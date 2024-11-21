@@ -2,9 +2,12 @@ package com.mozhimen.java.utilk.wrapper;
 
 import android.content.Context;
 
-import com.mozhimen.java.utilk.android.content.UtilKContext;
-import com.mozhimen.java.utilk.android.content.UtilKPackageInfo;
-import com.mozhimen.java.utilk.bases.BaseUtilK;
+import com.mozhimen.java.
+utilk.android.content.UtilKContext;
+import com.mozhimen.java.
+utilk.android.content.UtilKPackageInfo;
+import com.mozhimen.java.
+utilk.bases.BaseUtilK;
 
 /**
  * @ClassName UtilKPackage

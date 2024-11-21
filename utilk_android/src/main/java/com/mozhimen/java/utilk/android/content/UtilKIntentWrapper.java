@@ -1,16 +1,26 @@
 package com.mozhimen.java.utilk.android.content;
 
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+
 import androidx.annotation.RequiresPermission;
 
-import com.mozhimen.java.elemk.android.android.content.cons.CIntent;
-import com.mozhimen.java.elemk.android.android.content.cons.CPermission;
+import com.mozhimen.java.
+elemk.android.android.content.cons.CIntent;
+import com.mozhimen.java.
+elemk.android.android.content.cons.CPermission;
+import com.mozhimen.java.
+utilk.android.app.UtilKActivityInfoWrapper;
 import com.mozhimen.java.utilk.android.os.UtilKBuildVersion;
-import com.mozhimen.java.utilk.java.UtilKStrFile;
-import com.mozhimen.java.utilk.java.io.UtilKFileFormat;
+import com.mozhimen.java.
+utilk.java.UtilKStrFile;
+import com.mozhimen.java.
+utilk.java.UtilKStringWrapper;
+import com.mozhimen.java.
+utilk.java.io.UtilKFileFormat;
 
 import java.io.File;
 
@@ -22,6 +32,22 @@ import java.io.File;
  * @Version 1.0
  */
 public class UtilKIntentWrapper {
+    //获取启动App的Intent
+    @RequiresPermission(CPermission.QUERY_ALL_PACKAGES)
+    public static Intent getMainLauncher_ofPackageManger(Context context, String strPackageName) {
+        String strLauncherActivityName = UtilKActivityInfoWrapper.getMainLauncherName(context, strPackageName);
+        if (UtilKStringWrapper.hasSpace(strLauncherActivityName) || strLauncherActivityName.isEmpty())
+            return UtilKPackageManager.getLaunchIntentForPackage(context, strPackageName);
+        return getMainLauncher_ofClazz(strPackageName, strLauncherActivityName);
+    }
+
+    //获取mainLauncher
+    public static Intent getMainLauncher_ofClazz(String strPackageName, String strActivityName) {
+        Intent intent = getMain();
+        intent.addCategory(CIntent.CATEGORY_LAUNCHER);
+        intent.setClassName(strPackageName, strActivityName);
+        return intent;
+    }
 
 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -64,5 +90,21 @@ public class UtilKIntentWrapper {
             return null;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////
 
+    public static Intent getMain() {
+        return UtilKIntent.get(CIntent.ACTION_MAIN);
+    }
+
+    public static Intent getMain(Uri uri) {
+        return UtilKIntent.get(CIntent.ACTION_MAIN, uri);
+    }
+
+    //获取mainLauncher
+    public static Intent getMainLauncher_ofPackage(String strPackageName, Uri uri) {
+        Intent intent = getMain(uri);
+        intent.addCategory(CIntent.CATEGORY_LAUNCHER);
+        intent.setPackage(strPackageName);
+        return intent;
+    }
 }

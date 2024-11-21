@@ -5,8 +5,10 @@ import android.content.pm.PackageInfo;
 import android.os.Build;
 import android.util.Log;
 
-import com.mozhimen.java.elemk.android.android.content.cons.CPackageManager;
-import com.mozhimen.java.utilk.commons.IUtilK;
+import com.mozhimen.java.
+elemk.android.android.content.cons.CPackageManager;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
 
 /**
  * @ClassName UtilKPackageInfo

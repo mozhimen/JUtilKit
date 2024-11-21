@@ -4,7 +4,8 @@ import android.content.Context;
 import android.view.Display;
 import android.view.Surface;
 
-import com.mozhimen.java.elemk.android.android.content.cons.CActivityInfo;
+import com.mozhimen.java.
+elemk.android.android.content.cons.CActivityInfo;
 
 /**
  * @ClassName UtilKDisplay

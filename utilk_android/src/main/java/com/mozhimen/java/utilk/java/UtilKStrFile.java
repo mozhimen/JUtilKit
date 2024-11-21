@@ -2,8 +2,10 @@ package com.mozhimen.java.utilk.java;
 
 import android.net.Uri;
 
-import com.mozhimen.java.utilk.java.io.UtilKFileFormat;
-import com.mozhimen.java.utilk.java.io.UtilKFileWrapper;
+import com.mozhimen.java.
+utilk.java.io.UtilKFileFormat;
+import com.mozhimen.java.
+utilk.java.io.UtilKFileWrapper;
 
 import java.io.File;
 
@@ -21,7 +23,13 @@ public class UtilKStrFile {
         return UtilKFileWrapper.isFile(strFilePath2file(strFilePathName));
     }
 
-    //    @ADescription(CIntent.FLAG_GRANT_READ_URI_PERMISSION.toString(), CIntent.FLAG_GRANT_WRITE_URI_PERMISSION.toString())
+    /**
+     * 文件是否存在
+     */
+    public static boolean isFileExist(String strFilePathName) {
+        return isFile(strFilePathName);
+    }
+
     public static Uri strFilePath2uri(String strFilePathName) {
         return UtilKFileFormat.file2uri(strFilePath2file(strFilePathName));
     }

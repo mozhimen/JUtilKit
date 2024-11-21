@@ -1,6 +1,7 @@
 package com.mozhimen.java.utilk.android.content;
 
 import android.content.Intent;
+import android.net.Uri;
 
 /**
  * @ClassName UtilKIntent
@@ -16,5 +17,9 @@ public class UtilKIntent {
 
     public static Intent get(String action) {
         return new Intent(action);
+    }
+
+    public static Intent get(String action, Uri uri) {
+        return new Intent(action, uri);
     }
 }

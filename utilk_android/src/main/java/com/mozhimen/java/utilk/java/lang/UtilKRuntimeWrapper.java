@@ -1,6 +1,7 @@
 package com.mozhimen.java.utilk.java.lang;
 
-import com.mozhimen.java.utilk.java.UtilKStrFile;
+import com.mozhimen.java.
+utilk.java.UtilKStrFile;
 
 import java.io.IOException;
 

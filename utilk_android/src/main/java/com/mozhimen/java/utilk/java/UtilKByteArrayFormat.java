@@ -5,7 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
-import com.mozhimen.java.utilk.commons.IUtilK;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
+
+import java.nio.charset.Charset;
 
 /**
  * @ClassName UtilKByteArrayFormat
@@ -20,5 +23,15 @@ public class UtilKByteArrayFormat implements IUtilK {
     public static Bitmap bytes2bitmapAny(byte[] bytes) {
         Log.d(TAG, "bytes2bitmapAny bytes size " + bytes.length);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+
+    public static String bytes2str(byte[] bytes, Charset charset) {
+        return UtilKString.get(bytes, charset);
+    }
+
+    public static String bytes2str(byte[] bytes, int offset, int length) {
+        return UtilKString.get(bytes, offset, length);
     }
 }

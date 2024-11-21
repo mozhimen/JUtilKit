@@ -1,8 +1,11 @@
 package com.mozhimen.java.utilk.java.io;
 
-import com.mozhimen.java.utilk.android.util.UtilKLogWrapper;
-import com.mozhimen.java.utilk.commons.IUtilK;
-import com.mozhimen.java.utilk.java.UtilKStrFile;
+import com.mozhimen.java.
+utilk.android.util.UtilKLogWrapper;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
+import com.mozhimen.java.
+utilk.java.UtilKStrFile;
 
 import java.io.File;
 
@@ -43,6 +46,18 @@ public class UtilKFileWrapper implements IUtilK {
             return true;
         }
         return false;
+    }
+
+    //删除文件
+    public static boolean deleteFile(File file) {
+        if (!isFileExist(file)) {
+            UtilKLogWrapper.d(TAG, "deleteFile: file ${file.absolutePath} fail");
+            return true;
+        } else {
+            boolean res = file.delete();
+            UtilKLogWrapper.d(TAG, "deleteFile: file ${file.absolutePath} success " + res);
+            return res;
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////

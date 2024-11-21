@@ -2,7 +2,8 @@ package com.mozhimen.java.utilk.android.util;
 
 import android.util.DisplayMetrics;
 
-import com.mozhimen.java.utilk.android.content.UtilKResources;
+import com.mozhimen.java.
+utilk.android.content.UtilKResources;
 
 /**
  * @ClassName UtilKDisplayMetrics

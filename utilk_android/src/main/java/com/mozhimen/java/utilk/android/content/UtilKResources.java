@@ -1,5 +1,7 @@
 package com.mozhimen.java.utilk.android.content;
 
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -16,6 +18,10 @@ public class UtilKResources {
         return Resources.getSystem();
     }
 
+    public static Resources get_ofApp(Context context) {
+        return UtilKContext.getResources(context);
+    }
+
     ////////////////////////////////////////////////////////////////////////////
 
     public static DisplayMetrics getDisplayMetrics_ofSys() {
@@ -24,5 +30,11 @@ public class UtilKResources {
 
     public static Configuration getConfiguration_ofSys() {
         return get_ofSys().getConfiguration();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    public static AssetManager getAssets_ofApp(Context context) {
+        return get_ofApp(context).getAssets();
     }
 }

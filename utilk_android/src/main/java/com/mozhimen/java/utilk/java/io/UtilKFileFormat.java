@@ -2,14 +2,22 @@ package com.mozhimen.java.utilk.java.io;
 
 import android.net.Uri;
 
-import com.mozhimen.java.utilk.android.content.UtilKContext;
-import com.mozhimen.java.utilk.android.os.UtilKBuildVersion;
-import com.mozhimen.java.utilk.android.support.UtilKFileProvider;
-import com.mozhimen.java.utilk.android.util.UtilKLogWrapper;
-import com.mozhimen.java.utilk.bases.BaseUtilK;
-import com.mozhimen.java.elemk.android.android.content.cons.CIntent;
-import com.mozhimen.java.utilk.wrapper.UtilKPackage;
+import com.mozhimen.java.
+utilk.android.content.UtilKContext;
+import com.mozhimen.java.
+utilk.android.os.UtilKBuildVersion;
+import com.mozhimen.java.
+utilk.android.support.UtilKFileProvider;
+import com.mozhimen.java.
+utilk.android.util.UtilKLogWrapper;
+import com.mozhimen.java.
+utilk.bases.BaseUtilK;
+import com.mozhimen.java.
+elemk.android.android.content.cons.CIntent;
+import com.mozhimen.java.
+utilk.wrapper.UtilKPackage;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -43,11 +51,11 @@ public class UtilKFileFormat extends BaseUtilK {
 
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    public static FileOutputStream file2fileOutputStream(File file) throws FileNotFoundException {
-        return file2fileOutputStream(file, false);
-    }
-
     public static FileOutputStream file2fileOutputStream(File file, boolean isAppend) throws FileNotFoundException {
         return UtilKFileOutputStream.get(file, isAppend);
+    }
+
+    public static BufferedOutputStream file2bufferedOutputStream(File file, boolean isAppend) throws FileNotFoundException {
+       return UtilKOutputStreamFormat.outputStream2bufferedOutputStream(file2fileOutputStream(file, isAppend));
     }
 }

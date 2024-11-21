@@ -17,18 +17,41 @@ public class UtilKBufferedReader {
         else return new BufferedReader(reader, bufferSize);
     }
 
-    public static String readLines_use(BufferedReader bufferedReader) throws IOException {
+    //////////////////////////////////////////////////////////////
+
+    public static String readLines_use(BufferedReader bufferedReader, boolean isAddLineBreak) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
         try {
             String line = "";
-            while ((line = bufferedReader.readLine()) != null)
-                stringBuilder.append(line);/*.append("\n")*/
-            return stringBuilder.toString();/*.replaceAfterLast("\n", "")*/
+            if (isAddLineBreak) {
+                while ((line = bufferedReader.readLine()) != null)
+                    stringBuilder.append(line).append("\n");
+                return stringBuilder.toString()/*.replaceAfterLast("\n", "")*/;
+            } else {
+                while ((line = bufferedReader.readLine()) != null)
+                    stringBuilder.append(line);/*.append("\n")*/
+                return stringBuilder.toString();/*.replaceAfterLast("\n", "")*/
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             bufferedReader.close();
         }
         return "";
+    }
+
+    public static String readLine_use(BufferedReader bufferedReader) {
+        try {
+            return bufferedReader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 }

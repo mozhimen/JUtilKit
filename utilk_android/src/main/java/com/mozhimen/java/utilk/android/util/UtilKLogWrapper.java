@@ -2,7 +2,8 @@ package com.mozhimen.java.utilk.android.util;
 
 import android.util.Log;
 
-import com.mozhimen.java.elemk.android.android.util.cons.CLog;
+import com.mozhimen.java.
+elemk.android.android.util.cons.CLog;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

@@ -2,7 +2,8 @@ package com.mozhimen.java.utilk.android.os;
 
 import android.os.Build;
 
-import com.mozhimen.java.elemk.android.android.os.cons.CVersCode;
+import com.mozhimen.java.
+elemk.android.android.os.cons.CVersCode;
 //import androidx.annotation.ChecksSdkIntAtLeast;
 
 /**

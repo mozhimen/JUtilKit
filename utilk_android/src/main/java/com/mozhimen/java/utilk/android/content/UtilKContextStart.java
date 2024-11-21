@@ -3,8 +3,10 @@ package com.mozhimen.java.utilk.android.content;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import com.mozhimen.java.utilk.commons.IUtilK;
-import com.mozhimen.java.utilk.android.util.UtilKLogWrapper;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
+import com.mozhimen.java.
+utilk.android.util.UtilKLogWrapper;
 
 /**
  * @ClassName ContextStartUtil

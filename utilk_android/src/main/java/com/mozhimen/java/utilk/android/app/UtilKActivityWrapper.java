@@ -9,9 +9,12 @@ import android.os.IBinder;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.mozhimen.java.utilk.android.os.UtilKBuildVersion;
-import com.mozhimen.java.utilk.android.view.UtilKWindowManagerWrapper;
-import com.mozhimen.java.utilk.commons.IUtilK;
+import com.mozhimen.java.
+utilk.android.os.UtilKBuildVersion;
+import com.mozhimen.java.
+utilk.android.view.UtilKWindowManagerWrapper;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;

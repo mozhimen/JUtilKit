@@ -2,8 +2,10 @@ package com.mozhimen.java.utilk.javax.net;
 
 import android.util.Log;
 
-import com.mozhimen.java.utilk.commons.IUtilK;
-import com.mozhimen.java.utilk.java.io.UtilKInputStreamFormat;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
+import com.mozhimen.java.
+utilk.java.io.UtilKInputStreamFormat;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -79,7 +81,7 @@ public class UtilKHttpsURLConnectionWrapper implements IUtilK {
                 inputStream = httpsURLConnection.getInputStream();
             else
                 inputStream = httpsURLConnection.getErrorStream();
-            return UtilKInputStreamFormat.inputStream2str_use_ofBufferedReader(inputStream);
+            return UtilKInputStreamFormat.inputStream2str_use_ofBufferedReader(inputStream, null, 1024, false);
         } catch (MalformedURLException e) {
             e.printStackTrace(); // url格式错误
         } catch (IOException e) {

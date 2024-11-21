@@ -1,6 +1,7 @@
 package com.mozhimen.java.utilk.javax.net;
 
-import com.mozhimen.java.elemk.android.javax.net.bases.BaseX509TrustManager;
+import com.mozhimen.java.
+elemk.android.javax.net.bases.BaseX509TrustManager;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;

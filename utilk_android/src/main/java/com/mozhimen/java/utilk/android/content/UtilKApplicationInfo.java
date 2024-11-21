@@ -6,7 +6,8 @@ import android.content.pm.ApplicationInfo;
 
 import androidx.annotation.IdRes;
 
-import com.mozhimen.java.utilk.wrapper.UtilKRes;
+import com.mozhimen.java.
+utilk.wrapper.UtilKRes;
 
 /**
  * @ClassName UtilKApplicationInfo

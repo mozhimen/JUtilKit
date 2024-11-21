@@ -5,8 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.mozhimen.java.utilk.android.util.UtilKLogWrapper;
-import com.mozhimen.java.utilk.commons.IUtilK;
+import com.mozhimen.java.
+utilk.android.util.UtilKLogWrapper;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

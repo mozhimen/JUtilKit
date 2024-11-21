@@ -1,6 +1,7 @@
 package com.mozhimen.java.utilk.android.view;
 
-import com.mozhimen.java.utilk.android.util.UtilKDisplayMetrics;
+import com.mozhimen.java.
+utilk.android.util.UtilKDisplayMetrics;
 
 /**
  * @ClassName UtilKDisplayFormat

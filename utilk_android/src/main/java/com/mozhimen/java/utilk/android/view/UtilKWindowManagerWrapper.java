@@ -4,7 +4,8 @@ import android.annotation.SuppressLint;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.mozhimen.java.utilk.commons.IUtilK;
+import com.mozhimen.java.
+utilk.commons.IUtilK;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
