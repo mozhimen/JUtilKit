@@ -19,5 +19,11 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "JUtilKit"
-include ':utilk_java'
-include ':utilk_android'
+include ':java'
+include ':android'
+//ALibKit_Jetpack
+include ':ALibKit_Jetpack'
+project(':ALibKit_Jetpack').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetpack")
+include ':ALibKit_Jetpack:databinding'
+include ':ALibKit_Jetpack:core'
+include ':ALibKit_Jetpack:annotation'
