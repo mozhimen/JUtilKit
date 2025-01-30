@@ -1,0 +1,3 @@
+-dontwarn org.conscrypt.**
+-keep class org.conscrypt.** { *; }
+-keep interface org.conscrypt.** { *; }
