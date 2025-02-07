@@ -3,8 +3,7 @@ package com.mozhimen.java.utilk.java.io;
 import android.annotation.SuppressLint;
 import android.util.Log;
 
-import com.mozhimen.java.
-elemk.java.functions.Function2;
+import com.mozhimen.java.elemk.java.functions.IAB_CListener;
 import com.mozhimen.java.
 utilk.android.util.UtilKLogWrapper;
 import com.mozhimen.java.
@@ -36,7 +35,7 @@ public class UtilKInputStream implements IUtilK {
 
     ////////////////////////////////////////////////////////////////////////////
 
-    public static void read_write_use(InputStream inputStream, OutputStream outputStream, int bufferSize, Function2<Integer, Float, Void> block) throws IOException {
+    public static void read_write_use(InputStream inputStream, OutputStream outputStream, int bufferSize, IAB_CListener<Integer, Float, Void> block) throws IOException {
         try {
             byte[] bytes = new byte[bufferSize];
             long totalCount = inputStream.available();

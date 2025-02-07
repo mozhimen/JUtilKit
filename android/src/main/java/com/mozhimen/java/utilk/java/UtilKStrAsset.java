@@ -4,18 +4,17 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import com.mozhimen.java.elemk.java.functions.IAB_CListener;
 import com.mozhimen.java.
-elemk.java.functions.Function2;
+        utilk.android.content.UtilKAssetManager;
 import com.mozhimen.java.
-utilk.android.content.UtilKAssetManager;
+        utilk.android.util.UtilKLogWrapper;
 import com.mozhimen.java.
-utilk.android.util.UtilKLogWrapper;
+        utilk.bases.BaseUtilK;
 import com.mozhimen.java.
-utilk.bases.BaseUtilK;
+        utilk.java.io.UtilKInputStreamFormat;
 import com.mozhimen.java.
-utilk.java.io.UtilKInputStreamFormat;
-import com.mozhimen.java.
-utilk.javax.crypto.UtilKCryptoDisplace;
+        utilk.javax.crypto.UtilKCryptoDisplace;
 
 import java.io.File;
 import java.io.IOException;
@@ -99,7 +98,7 @@ public class UtilKStrAsset extends BaseUtilK {
     public static String strAssetName2str_use_ofBufferedReader(String strAssetName) throws IOException {
         if (!isAssetExists(strAssetName)) return null;
         else
-           return UtilKInputStreamFormat.inputStream2str_use_ofBufferedReader(UtilKAssetManager.open(getContext(), strAssetName),null,1024,false);
+            return UtilKInputStreamFormat.inputStream2str_use_ofBufferedReader(UtilKAssetManager.open(getContext(), strAssetName), null, 1024, false);
     }
 
     /**
@@ -122,7 +121,7 @@ public class UtilKStrAsset extends BaseUtilK {
 
     ///////////////////////////////////////////////////////////////////
 
-    public static File strAssetName2file_use(String strAssetName, File fileDest, boolean isAppend, int bufferSize, Function2<Integer, Float, Void> block) throws Exception {
+    public static File strAssetName2file_use(String strAssetName, File fileDest, boolean isAppend, int bufferSize, IAB_CListener<Integer, Float, Void> block) throws Exception {
         if (!isAssetExists(strAssetName)) {
             UtilKLogWrapper.d(TAG, "strAssetName2file: dont exist");
             return null;
@@ -130,7 +129,7 @@ public class UtilKStrAsset extends BaseUtilK {
             return UtilKInputStreamFormat.inputStream2file_use(UtilKAssetManager.open(getContext(), strAssetName), fileDest, isAppend, bufferSize, block);
     }
 
-    public static File strAssetName2file_use(String strAssetName, String strFilePathNameDest, boolean isAppend, int bufferSize, Function2<Integer, Float, Void> block) throws Exception {
+    public static File strAssetName2file_use(String strAssetName, String strFilePathNameDest, boolean isAppend, int bufferSize, IAB_CListener<Integer, Float, Void> block) throws Exception {
         if (!isAssetExists(strAssetName)) {
             UtilKLogWrapper.d(TAG, "strAssetName2file: dont exist");
             return null;

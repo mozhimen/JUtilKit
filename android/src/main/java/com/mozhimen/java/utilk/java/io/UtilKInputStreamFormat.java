@@ -2,9 +2,7 @@ package com.mozhimen.java.utilk.java.io;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
-import com.mozhimen.java.
-elemk.java.functions.Function2;
+import com.mozhimen.java.elemk.java.functions.IAB_CListener;
 import com.mozhimen.java.
 utilk.commons.IUtilK;
 import com.mozhimen.java.
@@ -93,13 +91,13 @@ public class UtilKInputStreamFormat implements IUtilK {
 
     ////////////////////////////////////////////////////////////////////////////
 
-    public static File inputStream2file_use(InputStream inputStream, String strFilePathNameDest, boolean isAppend, int bufferSize, Function2<Integer, Float, Void> block) throws Exception {
+    public static File inputStream2file_use(InputStream inputStream, String strFilePathNameDest, boolean isAppend, int bufferSize, IAB_CListener<Integer, Float, Void> block) throws Exception {
         File file = UtilKStrFile.strFilePath2file(strFilePathNameDest);
         UtilKStrFile.createFile(strFilePathNameDest);
         return inputStream2file_use(inputStream, file, isAppend, bufferSize, block);
     }
 
-    public static File inputStream2file_use(InputStream inputStream, File fileDest, boolean isAppend, int bufferSize, Function2<Integer, Float, Void> block) throws Exception {
+    public static File inputStream2file_use(InputStream inputStream, File fileDest, boolean isAppend, int bufferSize, IAB_CListener<Integer, Float, Void> block) throws Exception {
         UtilKFileWrapper.createFile(fileDest);
         /*//        val fileInputStream = file.file2fileInputStream()
         //        Log.d(TAG, "inputStream2file: inputStream ${inputStream.available()}")
@@ -121,14 +119,14 @@ public class UtilKInputStreamFormat implements IUtilK {
             String strFilePathNameDest,
             boolean isAppend,
             int bufferSize,
-            Function2<Integer, Float, Void> block
+            IAB_CListener<Integer, Float, Void> block
     ) throws Exception {
         File tempFile = UtilKStrFile.strFilePath2file(strFilePathNameDest);
         UtilKFileWrapper.createFile(tempFile);
         return inputStream2file_use_ofBufferedOutStream(inputStream, tempFile, isAppend, bufferSize, block);
     }
 
-    public static File inputStream2file_use_ofBufferedOutStream(InputStream inputStream, File fileDest, boolean isAppend, int bufferSize, Function2<Integer, Float, Void> block) throws Exception {
+    public static File inputStream2file_use_ofBufferedOutStream(InputStream inputStream, File fileDest, boolean isAppend, int bufferSize, IAB_CListener<Integer, Float, Void> block) throws Exception {
         UtilKFileWrapper.createFile(fileDest);
         try {
             UtilKInputStream.read_write_use(inputStream,UtilKFileFormat.file2bufferedOutputStream(fileDest,isAppend), bufferSize, block);
