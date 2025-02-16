@@ -6,18 +6,15 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.util.Log;
 
 import androidx.annotation.RequiresPermission;
 
 import com.mozhimen.java.
-elemk.android.android.content.cons.CPermission;
+        elemk.android.android.content.cons.CPermission;
 import com.mozhimen.java.
-utilk.android.os.UtilKBuildVersion;
+        utilk.android.util.UtilKLogWrapper;
 import com.mozhimen.java.
-utilk.android.util.UtilKLogWrapper;
-import com.mozhimen.java.
-utilk.commons.IUtilK;
+        utilk.commons.IUtilK;
 
 import java.util.List;
 
@@ -33,15 +30,11 @@ public class UtilKPackageManager implements IUtilK {
         return UtilKContext.getPackageManager(context);
     }
 
-    public static PackageInfo getPackageInfo(Context context, String strPackageName, int flags) {
-        try {
-            return get(context).getPackageInfo(strPackageName, flags);
-        } catch (Exception e) {
-            e.printStackTrace();
-            UtilKLogWrapper.e(TAG, "getPackageInfo: ", e);
-            return null;
-        }
+    public static PackageInfo getPackageInfo(Context context, String strPackageName, int flags) throws PackageManager.NameNotFoundException {
+        return get(context).getPackageInfo(strPackageName, flags);
     }
+
+
 
     /////////////////////////////////////////////////////////////////////////////////
 

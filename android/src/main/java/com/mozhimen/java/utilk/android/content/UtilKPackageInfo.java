@@ -6,9 +6,7 @@ import android.os.Build;
 import android.util.Log;
 
 import com.mozhimen.java.
-elemk.android.android.content.cons.CPackageManager;
-import com.mozhimen.java.
-utilk.commons.IUtilK;
+        utilk.commons.IUtilK;
 
 /**
  * @ClassName UtilKPackageInfo
@@ -18,15 +16,15 @@ utilk.commons.IUtilK;
  * @Version 1.0
  */
 public class UtilKPackageInfo implements IUtilK {
-    public static PackageInfo get(Context context, String strPackageName, int flags)  {
-        return UtilKPackageManager.getPackageInfo(context, strPackageName, flags);
+    public static PackageInfo get(Context context, String strPackageName, int flags) {
+        return UtilKPackageManagerWrapper.getPackageInfoSafe(context, strPackageName, flags);
     }
 
-    public static PackageInfo get(Context context, int flags)  {
+    public static PackageInfo get(Context context, int flags) {
         return get(context, UtilKContext.getPackageName(context), flags /*0*/);
     }
 
-    public static PackageInfo get(Context context)  {
+    public static PackageInfo get(Context context) {
         return get(context, 0);
     }
 
@@ -85,14 +83,5 @@ public class UtilKPackageInfo implements IUtilK {
         }
     }
 
-    //////////////////////////////////////////////////////////////
 
-    public static boolean hasPackage(Context context, String strPackageName) {
-        try {
-            get(context, strPackageName, CPackageManager.GET_ACTIVITIES);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }
