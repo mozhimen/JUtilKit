@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.os.Build;
 import android.util.Log;
 
+import com.mozhimen.java.elemk.android.android.content.cons.CPackageManager;
 import com.mozhimen.java.
         utilk.commons.IUtilK;
 
@@ -83,5 +84,14 @@ public class UtilKPackageInfo implements IUtilK {
         }
     }
 
+    //////////////////////////////////////////////////////////////
 
+    public static boolean hasPackage(Context context, String strPackageName) {
+        try {
+            get(context, strPackageName, CPackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
