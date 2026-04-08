@@ -34,13 +34,14 @@ android {
 }
 
 dependencies {
-    api project(":ALibKit_Jetpack:annotation")
-    api project(":ALibKit_Jetpack:core")
-
 //    implementation 'androidx.appcompat:appcompat:1.4.1'//1.6.1
 //    implementation 'androidx.annotation:annotation:1.7.1'
 //    implementation('com.android.support:appcompat-v7:26.1.0')
     implementation project(project.path.replace(project.name, '') +':java')
+
+    api 'com.github.mozhimen.ALibKit_Jetpack:annotation:0.0.7'
+    api 'com.github.mozhimen.ALibKit_Jetpack:core-bom:0.0.7'
+
     //test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
