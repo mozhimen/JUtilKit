@@ -21,12 +21,9 @@ buildscript {
     }
 }
 
-// 根目录 build.gradle
 subprojects {
     apply plugin: 'maven-publish'
-
     afterEvaluate { project ->
-        // Java Library 模块
         if (project.plugins.hasPlugin('java-library')) {
             publishing {
                 publications {
@@ -35,11 +32,33 @@ subprojects {
                         groupId = 'com.github.mozhimen'
                         artifactId = project.name
                         version = '0.0.8'
+
+                        pom {
+                            withXml {
+                                asNode().appendNode("dependencies").apply {
+                                    project.configurations.api.allDependencies.forEach {
+                                        appendNode("dependency") {
+                                            appendNode("groupId", it.group)
+                                            appendNode("artifactId", it.name)
+                                            appendNode("version", it.version)
+                                            appendNode("scope", "compile")
+                                        }
+                                    }
+                                    project.configurations.implementation.allDependencies.forEach {
+                                        appendNode("dependency") {
+                                            appendNode("groupId", it.group)
+                                            appendNode("artifactId", it.name)
+                                            appendNode("version", it.version)
+                                            appendNode("scope", "runtime")
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-        // Android Library 模块
         else if (project.plugins.hasPlugin('com.android.library')) {
             project.android.libraryVariants.all { variant ->
                 if (variant.buildType.name == "release") {
@@ -54,6 +73,28 @@ subprojects {
                                 // 使用任务输出的 AAR 文件
                                 artifact(releaseAar) {
                                     builtBy releaseAar
+                                }
+
+                                pom {
+                                    withXml {
+                                        def dependenciesNode = asNode().appendNode("dependencies")
+                                        project.configurations.implementation.allDependencies.forEach {
+                                            dependenciesNode.appendNode("dependency").apply {
+                                                appendNode("groupId", it.group)
+                                                appendNode("artifactId", it.name)
+                                                appendNode("version", it.version)
+                                                appendNode("scope", "compile")
+                                            }
+                                        }
+                                        project.configurations.api.allDependencies.forEach {
+                                            dependenciesNode.appendNode("dependency").apply {
+                                                appendNode("groupId", it.group)
+                                                appendNode("artifactId", it.name)
+                                                appendNode("version", it.version)
+                                                appendNode("scope", "compile")
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
